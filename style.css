@@ -37,6 +37,9 @@ section{
     color: #e8eaed;
     border-radius: 8px;
 }
+.botoes > div{ /* pra fazer os efeitos dos botoes */
+cursor: pointer;
+}
 
 .botoes{
     grid-area: botoes;
