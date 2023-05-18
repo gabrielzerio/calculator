@@ -57,7 +57,7 @@ function botoesOperadores(operador){
         temUmaContaPendente = true;
     }else{
         if(operador.textContent == '+'){
-           resultado += Number((valorAnterior + valorAtual));
+           resultado += valorAnterior + Number(valorAtual);
         }
     }
 
