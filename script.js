@@ -2,12 +2,12 @@ const areaDosBotoes = document.querySelector('.botoes');
 const telaAtual = document.querySelector('.telaAtual');
 const telaAnterior = document.querySelector('.telaAnterior');
 areaDosBotoes.style.display = 'grid';
-let valorAtual='';
-let mostraValorAtual='';
-let valorAtualNumero=0;
-let valorAnterior=0;
-let resultado=0;
-let temUmaContaPendente=false;
+let valorAtual = '';
+let mostraValorAtual = '';
+let valorAtualNumero = 0;
+let valorAnterior = 0;
+let resultado = 0;
+let temUmaContaPendente = false;
 window.onload = function () {
     gridDisplay();
 };
@@ -28,43 +28,49 @@ function gridDisplay() {
 }
 
 areaDosBotoes.addEventListener('click', (e) => {
-    if(e.target.className === 'number'){
+    if (e.target.className === 'number') {
         botoesNumero(e.target);
     }
-    if(e.target.className === 'operators'){
+    if (e.target.className === 'operators') {
         botoesOperadores(e.target);
     }
-    if(e.target.className === 'result'){
+    if (e.target.className === 'result') {
         result();
     }
 });
 
-function result(){
-    console.log(resultado+valorAtual);
+function result() {
+    if (temUmaContaPendente) {
+        mostraValorAtual = valorAnterior + valorAtualNumero   //console.log(valorAnterior+valorAtualNumero);
+        telaAtual.textContent = mostraValorAtual;
+    } else {
+        mostraValorAtual = resultado+valorAtualNumero;
+        telaAtual.textContent = mostraValorAtual;
+    }
 }
 
-function botoesNumero(numero){
+function botoesNumero(numero) {
     mostraValorAtual += numero.textContent; // ISSO É O QUE VAI MOSTRAR NA TELA!
     telaAtual.textContent = mostraValorAtual; //
 
     valorAtual += numero.textContent;
     valorAtualNumero = Number(valorAtual);
 }
-function botoesOperadores(operador){
+function botoesOperadores(operador) {
 
-    if(valorAtual!='' && !temUmaContaPendente){
-        valorAnterior = Number(valorAtual);
+    if (valorAtual != '' && !temUmaContaPendente) {
+        valorAnterior = valorAtualNumero;
         temUmaContaPendente = true;
-    }else{
-        if(operador.textContent == '+'){
-           resultado += valorAnterior + Number(valorAtual);
-        }
+    } else {
+        resultado = valorAnterior + valorAtualNumero;
+        valorAnterior = resultado;
+
     }
 
-    mostraValorAtual+=operador.textContent; // ISSO É O QUE VAI MOSTRAR NA TELA!
+    mostraValorAtual += operador.textContent; // ISSO É O QUE VAI MOSTRAR NA TELA!
     telaAtual.textContent = mostraValorAtual; //
     valorAtual = '';
-    valorAtualNumero=0;
+    valorAtualNumero = 0;
 }
 
 
