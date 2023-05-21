@@ -1,62 +1,55 @@
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-}
-body,html{
-    height: 100vh;
-    background-color: #696969;
-}
-section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-.container{
-    display: grid;
-    grid-template-rows: 15% 83%;
-    grid-template-columns: 30% 68%;
-    grid-template-areas: "tela tela" "blank botoes";
-    border: 1px solid black;
-    margin: 0;
-    width: 50%;
-    min-width: 600px;
-    height: 70%;
-    padding: 6px;
-    gap: 10px;
-}
-.botoes button{
-    border: 1px solid black;
-    background-color: #5f6368;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    color: #e8eaed;
-    border-radius: 8px;
-}
-.botoes > button{ /* pra fazer os efeitos dos botoes */
-cursor: pointer;
+    font-family: 'Didact Gothic', sans-serif;
+    font-weight: normal;
 }
 
-.botoes{
-    grid-area: botoes;
-    height: 100%;
-    gap: 10px;
+body{
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right ,#800080, #4b0082, #ff4500);
 }
-.telaAnterior{
-    grid-area: blank;
-    color: white;
-    border: 1px solid #3c4043;
-    border-radius: 8px;
+.calculator-grid{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows: minmax(120px,auto) repeat(5,100px);
 }
-.telaAtual{
-    text-align: end;
-    font-size: 30px;
-    padding: 3px;
-    grid-area: tela;
-    border: 1px solid #3c4043;
-    border-radius: 8px;
-    color:#e8eaed;
+.calculator-grid > button{
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255,.75);
+}
+
+.calculator-grid > button:hover{
+    background-color: rgba(255, 255, 255,.9);
+}
+.span-two{
+    grid-column: span 2;
+}
+
+.output{
+    grid-column: 1/-1;
+    background-color: rgba(0,0,0,.75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-wrap: break-all;
+}
+
+.output .previous-operand{
+color: rgba(255, 255, 255, .75);
+font-size: 1.5rem;
+}
+
+.output .current-operand{
+color: rgba(255, 255, 255, .75);
+font-size: 2.5rem;
 }
