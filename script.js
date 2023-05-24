@@ -17,7 +17,13 @@ class Calculator {
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
     chooseOperation(operation) {
-        if (this.currentOperand === '') return;
+        //console.log(this.currentOperand, operation);
+        if (this.currentOperand === '' && operation == '-'){
+            this.currentOperand = `-${this.currentOperand}`;
+            return;
+        }else if(this.currentOperand ===''){
+            return;
+        }
         if (this.previousOperand !== '') {
             this.compute();
         }
