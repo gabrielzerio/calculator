@@ -117,3 +117,31 @@ deleteButton.addEventListener('click', () => {
     calculator.updateDisplay();
 });
 
+document.addEventListener('keydown', (event) => {
+    //console.log(`Key pressed ${name} \r\n Key code value: ${code}`);
+    if(event.key >=0 || event.key <=9){
+        calculator.appendNumber(event.key);
+        calculator.updateDisplay();
+    }if(event.code == 'Backspace'){
+        calculator.delete();
+        calculator.updateDisplay();
+    }if(event.code == 'Equal'){
+        calculator.compute();
+        calculator.updateDisplay();
+    }if(event.key == '+'){
+        calculator.chooseOperation('+');
+        calculator.updateDisplay();
+    }if(event.key == '-'){
+        calculator.chooseOperation('-');
+        calculator.updateDisplay();
+    }
+    if(event.key == '/'){
+        calculator.chooseOperation('÷');
+        calculator.updateDisplay();
+    }
+    if(event.key == '*'){
+        calculator.chooseOperation('*');
+        calculator.updateDisplay(); 
+    }
+    return;
+}, false);
